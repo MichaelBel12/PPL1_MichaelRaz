@@ -1,15 +1,64 @@
+; Signature: last-item(lst)
+; Type: [(List[T1]) -> T1]
+; Purpose: Returns the last item of an array.
+; Pre-conditions: array not empty
+; Tests: (last-item'(123))=>3
+
 (define last-item
   (λ (lst)
-    'todo))
+    (if (eq? (cdr lst) '())
+      (car lst)
+      (last-item (cdr lst)))))
+
+
+
+; Signature: remove-last-item(lst)
+; Type: [(List[T1]) -> List[T1]]
+; Purpose: Returns the given list without the last item.
+; Pre-conditions: array not empty
+Tests:(last-item'(123))=>3(remove-last-item'(123))=>'(12)
 
 (define remove-last-item
   (λ (lst)
-    'todo))
+    (if (eq? (cdr lst) '())
+      '()
+      (cons (car lst) (remove-last-item (cdr lst))))))
+
+
+; Signature: rotate-nth(lst,n)
+; Type: [List[T1] * int -> List[T1]]
+; Purpose: return a list which is the original list roatated n times to the right.
+; Pre-conditions: array not empty, n>=0;
+;Tests: (rotate-nth'(123)1)=>(312)
 
 (define rotate-nth
   (λ (lst n)
-   'todo))
+    (if (= n 0)
+      lst
+      (rotate-nth
+        (cons (last-item lst) (remove-last-item lst))
+        (- n 1)))))
+
+
+; Signature: deep-reverse(lst)
+; Type: [List[T1] -> List[T1]]
+; Purpose:returns a list with all elements reversed at every level of nesting.
+; Pre-conditions: true.
+;Tests: (deep-reverse'(1(23)(45)))=>((54)(32)1); (deep-reverse '() => '());
+
+(define deep-reverse-helper
+  (λ (lst acc)
+    (if (eq? lst '())
+      acc
+      (deep-reverse-helper
+        (cdr lst)
+        (cons (if (pair? (car lst))
+                  (deep-reverse (car lst))
+                  (car lst))
+              acc)))))
 
 (define deep-reverse
-  (λ (l)
-    'todo))
+  (λ (lst)
+    (deep-reverse-helper lst '())))
+
+ 
