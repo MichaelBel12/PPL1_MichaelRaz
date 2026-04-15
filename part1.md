@@ -106,4 +106,4 @@ Answer: (x:number[])=>number;
 Answer: <T>(x:boolean,y:T[]) => T;
 
 6. [3 points] `(f,g) => x => f(g(x+1))`
-Answer: <T, U>(f:(x:T)=> U,g:(y:number)=>T)=> h:(j:number)=>U
+Answer: <T, U>(f:(x:T) => U, g:(y:number) => T) => (x:number) => U

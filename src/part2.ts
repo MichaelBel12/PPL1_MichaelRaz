@@ -20,8 +20,8 @@ export const isPalindrome = (text: string): boolean => {
 
     const lowerText = text.toLowerCase();
     const lowerTextArray = stringToArray(lowerText); 
-    const letterArray = lowerTextArray.filter(cur => alphabet.indexOf(cur) >= 0);
-    const bool = letterArray.reduce((acc, cur, i) => {
+    const letterArray = lowerTextArray.filter((cur: string) => alphabet.indexOf(cur) >= 0);
+    const bool = letterArray.reduce((acc: boolean, cur: string, i: number) => {
         return acc && (cur === letterArray[letterArray.length - 1 - i]);
     }, true);
     return bool;
