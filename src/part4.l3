@@ -16,7 +16,7 @@
 ; Type: [(List[T1]) -> List[T1]]
 ; Purpose: Returns the given list without the last item.
 ; Pre-conditions: array not empty
-Tests:(last-item'(123))=>3(remove-last-item'(123))=>'(12)
+; Tests:(last-item'(123))=>3(remove-last-item'(123))=>'(12)
 
 (define remove-last-item
   (λ (lst)
